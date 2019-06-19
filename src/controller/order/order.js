@@ -21,6 +21,7 @@ const createNewOrder=(req,res)=>{
             req.body.amount
         ];
 
+<<<<<<< Updated upstream
         const check_query = 'SELECT * FROM users WHERE id=$1';
         pool.query(check_query ,[owner_id], (error,answer)=>{
         
@@ -34,6 +35,21 @@ const createNewOrder=(req,res)=>{
                             pool.query(check_query ,[req.body.car_id,owner_id], (error,answer2)=>{ 
                                 
                                 if(answer2.rows.length>0){
+=======
+        const check_user = 'SELECT * FROM users WHERE id=$1';
+        pool.query(check_user ,[owner_id], (error,response)=>{
+        
+            if(response.rows[0].email===owner.email){
+                    
+                const check_car = 'SELECT * FROM cars WHERE id=$1';
+                pool.query(check_car ,[req.body.car_id], (error,response1)=>{
+                    if(response1.rows.length>0){
+                        if(response1.rows[0].status=='available'){
+                            const check_orders = 'SELECT * FROM orders WHERE car_id=$1 AND buyer=$2';
+                            pool.query(check_orders ,[req.body.car_id,owner_id], (error,response2)=>{ 
+                                
+                                if(response2.rows.length>0){
+>>>>>>> Stashed changes
                                     return res.status(400).json({
                                         status:400,
                                         error:'you can not sent this order because you have done before you can update you order price'
