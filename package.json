@@ -42,6 +42,7 @@
     "nyc": "^14.1.1",
     "pg": "^7.11.0"
   },
+  
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",

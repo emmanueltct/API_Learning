@@ -23,4 +23,5 @@ pool.query(selectQuery,[car_id], (error,answer)=>{
   
 };
 
+
     export default singleCar;
