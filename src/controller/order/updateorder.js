@@ -67,9 +67,8 @@ const priceUpdateOrder=(req,res)=>{
         error:`no request order found on this id ${order_id} `
             }) 
         }
-    
-    })
+ })
       
-    };
+};
 
-        export default priceUpdateOrder;
+export default priceUpdateOrder;

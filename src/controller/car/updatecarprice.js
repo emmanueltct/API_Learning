@@ -47,7 +47,6 @@ const priceUpdateCar=(req,res)=>{
                error:'this car belongs to another user! you can update it only if you are onwer' 
 
                 });
-                
             }            
         }else{
         return res.status(404).json({

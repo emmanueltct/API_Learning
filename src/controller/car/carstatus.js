@@ -10,6 +10,7 @@ const statusUpdateCar=(req,res)=>{
         error:error.details[0].message
     })
     
+    
     const owner=req.user_token.user_token;
     const owner_id=owner.id;
 

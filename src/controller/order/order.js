@@ -58,7 +58,6 @@ const createNewOrder=(req,res)=>{
                                                 })
                                             });
                                         }
-
                                    
                                     })
 
@@ -74,7 +73,7 @@ const createNewOrder=(req,res)=>{
                         return res.status(400).json({
                             status:400,
                             message:'this car is not exist no information found',
-                            });  
+                         });  
                     }   
              });
         }

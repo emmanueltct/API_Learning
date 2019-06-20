@@ -6,7 +6,6 @@ import {createvalidation } from '../../validation/car.validation';
 
 const createNewCar=(req,res)=>{
   
-
 const {error}=createvalidation(req.body);
 if(error)return res.status(400).json({
   status:400,
