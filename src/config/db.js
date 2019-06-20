@@ -7,7 +7,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 });
 pool.on('connect', () =>{
-  console.log('connected to the db');
+  //console.log('connected to the db');
 });
 
 const createTables = () => {
@@ -30,7 +30,7 @@ const tables =
         created_on DATE NOT NULL DEFAULT CURRENT_DATE,
         state VARCHAR(128) NOT NULL,
         status VARCHAR(128) NOT NULL DEFAULT 'available',
-        price money NOT NULL,
+        price INT NOT NULL,
         manufacturer VARCHAR(128) NOT NULL,
         model VARCHAR(128) NOT NULL,
         body_type VARCHAR(128) NOT NULL,
@@ -43,7 +43,7 @@ const tables =
         id SERIAL PRIMARY KEY,
         buyer int NOT NULL,
         car_id int NOT NULL,
-        amount money NOT NULL,
+        amount INT NOT NULL,
         status VARCHAR(128) NOT NULL DEFAULT 'Pending',
         created_on DATE NOT NULL DEFAULT CURRENT_DATE,
         FOREIGN KEY (car_id) REFERENCES cars(id) ON DELETE CASCADE
@@ -61,7 +61,8 @@ const tables =
         description VARCHAR(128) NOT NULL,
         FOREIGN KEY (car_id) REFERENCES cars(id) ON DELETE CASCADE
         ON UPDATE CASCADE
-        );`
+        )
+         ;`
         pool.query(tables)
         .then((res)=>{
            
@@ -74,14 +75,19 @@ const tables =
         
     };
     
+const insertquery=()=>{
+ 
+const insertuser='INSERT INTO users (email,first_name,last_name,password,address,is_admin) values($1,$2,$3,$4,$5,$6)';
+pool.query(insertuser,['andela@gmail.com','andela','bootcamp','12345','kigali','true']);
+}
+
  const dropTables=()=>{
-  pool.query('DROP TABLE IF EXISTS users,cars,orders,flag  CASCADE') ;
+  pool.query('DROP TABLE IF EXISTS users,cars,orders,flag  CASCADE');
   
   pool.end();
  }
 
-
-export {createTables,dropTables}; 
+export {createTables,dropTables,insertquery}; 
 
 require('make-runnable');
 

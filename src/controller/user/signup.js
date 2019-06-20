@@ -20,12 +20,10 @@ const user_data=[
     req.body.address
 ]
 
-
  
 const check_email = 'SELECT * FROM users WHERE email = $1';
 pool.query(check_email, [req.body.email], (error, answer) => {
   
-
   if (answer.rows.length>0){
     return res.status(409).json({
       status:409,
