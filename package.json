@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir dist",
-    "start": "npm run create --exec babel-node src/index.js",
+    "start": "npm run create nodemon --exec babel-node src/index.js",
     "dev": "nodemon --exec babel-node src/index.js",
     "create": "babel-node ./src/config/db.js createTables",
     "drop": " babel-node ./src/config/db.js dropTables",
