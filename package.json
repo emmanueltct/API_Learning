@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emmanueltct/AutoMart.git"
+    "url": "git+https://github.com/emmanueltct/automart-3.git"
   },
   "author": "Emmanuel MUNEZERO",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/emmanueltct/AutoMart/issues"
+    "url": "https://github.com/emmanueltct/automart-3/issues"
   },
-  "homepage": "https://github.com/emmanueltct/AutoMart#readme",
+  "homepage": "https://github.com/emmanueltct/automart-3#readme",
   "engines": {
     "node": "10.15.3"
   },
