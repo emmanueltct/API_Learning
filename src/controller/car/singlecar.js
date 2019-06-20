@@ -15,7 +15,7 @@ pool.query(selectQuery,[car_id], (error,answer)=>{
     }else{
         return res.status(404).json({
             status:404,
-            message:`no car found on this id ${car_id} `
+            error:`no car found on this id ${car_id} `
         }) 
     }
 

@@ -21,7 +21,7 @@ app.get('/',(req,res)=>{
        message:'Welcome to automart this is challenge 3'
    }) 
 })
-const port=process.env.PORT||3000;
+const port=process.env.PORT||4300;
 app.listen(port, ()=>console.log(`server staterd at ${port}`));
 
 export default app;

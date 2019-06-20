@@ -6,10 +6,12 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "start": "nodemon --exec babel-node src/index.js",
-    "create": " nodemon --exec babel-node ./src/config/db.js createAllTables",
+    "create": "babel-node ./src/config/db.js createTables",
+    "drop": " babel-node ./src/config/db.js dropTables",
+    "admin": " babel-node ./src/config/db.js insertquery",
     "lint": "eslint 'src/**/*.js' --fix",
     "format": "prettier-eslint 'src/**/*.{js,json}' --write",
-    "test": "nyc --reporter=html --reporter=text mocha --require @babel/register test/*.js --exit",
+    "test": "npm run drop && npm run create &&  nyc --reporter=html --reporter=text mocha --require @babel/register test/*.js --exit",
     "coverage": "nyc --reporter=lcov npm run test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },

@@ -18,15 +18,17 @@ const createNewOrder=(req,res)=>{
             req.body.car_id,
             req.body.amount
         ];
-
-        const check_user = 'SELECT * FROM users WHERE id=$1';
-        pool.query(check_user ,[owner_id], (error,response)=>{
-        
-            if(response.rows[0].email===owner.email){
-                    
+     
                 const check_car = 'SELECT * FROM cars WHERE id=$1';
                 pool.query(check_car ,[req.body.car_id], (error,response1)=>{
                     if(response1.rows.length>0){
+                        if(response1.rows[0].owner_id==owner_id){
+                            return res.status(400).json({
+                                status:400,
+                                message:'you can not make ordder of your own car'
+                            })
+                        }
+
                         if(response1.rows[0].status=='available'){
                             const check_orders = 'SELECT * FROM orders WHERE car_id=$1 AND buyer=$2';
                             pool.query(check_orders ,[req.body.car_id,owner_id], (error,response2)=>{ 
@@ -34,7 +36,7 @@ const createNewOrder=(req,res)=>{
                                 if(response2.rows.length>0){
                                     return res.status(400).json({
                                         status:400,
-                                        error:'you can not sent this order because you have done before you can update you order price'
+                                        error:'you can not sent this order because you have sent before'
                                         });  
                                 }else{
                                     
@@ -77,12 +79,6 @@ const createNewOrder=(req,res)=>{
                     }   
              });
         }
-        else{
-            return res.status(400).json({
-                status:400,
-                message:'token information no longer exist',
-                });  
-        }   
-    });
-}
+      
+
     export default createNewOrder;
