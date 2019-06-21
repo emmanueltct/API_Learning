@@ -35,7 +35,7 @@ describe('buyer update order', () => {
             res.body.should.have.property('status').eql(200)
             done();
           });
-      });  
+      });   
 
       it('update price of not existing order ', (done) => {
         const car= {
@@ -96,4 +96,7 @@ describe('buyer update order', () => {
               done();
             });
         });  
+
+        
+        
 });

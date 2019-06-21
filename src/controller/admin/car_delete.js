@@ -4,7 +4,7 @@ import pool from '../../config/config.js'
 const deleteCar=(req,res)=>{
 const car_id=req.params.id;
 const owner=req.user_token.user_token;
-if(owner.is_admin==true){
+if(owner.is_admin=='true'){
 
 const selectQuery = 'SELECT * FROM cars WHERE id=$1';
 pool.query(selectQuery,[car_id], (error,answer)=>{
@@ -25,9 +25,9 @@ pool.query(selectQuery,[car_id], (error,answer)=>{
 
 })
 }else{
-    return res.status(404).json({
-        status:404,
-        message:'to delete this car login as Admin first otherwise you are not allowed to delete' 
+    return res.status(400).json({
+        status:400,
+        message:'only admin can delete a car' 
 });
 }
 };

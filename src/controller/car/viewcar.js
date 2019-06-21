@@ -154,7 +154,7 @@ const viewall=(req,res)=>{
         }else{
             return res.status(400).json({
                 status:400,
-                message:'you are not allowed to see car which is sold search for available and remeber to use correct keyword'
+                message:'use correct key word or logged in as admin'
                 })  
         }
         }

@@ -37,27 +37,7 @@ describe('user send order request', () => {
           done();
         });
     });  
-
-
-    it('when user send request twice', (done) => {
-
-        const order={
-            car_id:2,
-            amount:12000, 
-        };
-        chai.request(app)
-          .post('/api/v2/order')
-          .set('x-auth-token', token)
-          .send(order)
-          .end((err, res) => {
-            res.should.have.status(400);
-            res.should.be.an('object');
-            res.body.should.have.property('error');
-            res.body.should.have.property('status').eql(400)
-            done();
-          });
-      });
-
+    
       it('when user send request to marked car', (done) => {
 
         const order={

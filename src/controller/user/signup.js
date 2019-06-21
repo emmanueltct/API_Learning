@@ -44,7 +44,7 @@ pool.query(check_email, [req.body.email], (error, answer) => {
             email:results.rows[0].email,
             is_admin:results.rows[0].is_admin
             }
-            const token = jwt.sign({ user_token }, process.env.SECRET);
+            const token = jwt.sign({ user_token }, process.env.SECRET,{expiresIn:'1d'});
             res.header('x-auth-token', token)
             return res.status(201).json({
                 status:201,

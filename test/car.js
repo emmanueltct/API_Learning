@@ -61,9 +61,31 @@ describe('car creation', () => {
         });
     });  
 
+    it('car ad ', (done) => {
+      const car={
+          state:'new',
+          price:6000,
+          manufacturer:'Toyota',
+          model:'v8',
+          body_type:'trailer'
+      };
+      chai.request(app)
+        .post('/api/v2/car')
+        .set('x-auth-token', token)
+        .send(car)
+        .end((err, res) => {
+          res.should.have.status(201);
+          res.should.be.an('object');
+          res.body.should.have.property('message');
+          res.body.should.have.property('data');
+          res.body.should.have.property('status').eql(201)
+          done();
+        });
+    });  
+
 
     
-    it('car ad 2', (done) => {
+    it('car ad 3', (done) => {
       const car={
           state:'new',
           price:1000,

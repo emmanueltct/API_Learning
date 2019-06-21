@@ -58,8 +58,8 @@ const tables =
         description VARCHAR(128) NOT NULL,
         FOREIGN KEY (car_id) REFERENCES cars(id) ON DELETE CASCADE
         ON UPDATE CASCADE
-        )
-         ;`
+        );
+        INSERT INTO users (email,first_name,last_name,password,address,is_admin) values('andela@gmail.com','andela','bootcamp','12345','kigali','true') ON CONFLICT DO NOTHING`;
         pool.query(tables)
         .then((res)=>{
            
@@ -72,11 +72,7 @@ const tables =
         
     };
     
-const insertquery=()=>{
- 
-const insertuser='INSERT INTO users (email,first_name,last_name,password,address,is_admin) values($1,$2,$3,$4,$5,$6)';
-pool.query(insertuser,['andela@gmail.com','andela','bootcamp','12345','kigali','true']);
-}
+
 
  const dropTables=()=>{
   pool.query('DROP TABLE IF EXISTS users,cars,orders,flag  CASCADE');
@@ -84,7 +80,7 @@ pool.query(insertuser,['andela@gmail.com','andela','bootcamp','12345','kigali','
   pool.end();
  }
 
-export {createTables,dropTables,insertquery}; 
+export {createTables,dropTables}; 
 
 require('make-runnable');
 
