@@ -25,7 +25,7 @@ const createNewOrder=(req,res)=>{
                         if(response1.rows[0].owner_id==owner_id){
                             return res.status(400).json({
                                 status:400,
-                                message:'you can not make ordder of your own car'
+                                message:'you can not make order of your own car'
                             })
                         }
 
