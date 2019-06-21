@@ -59,7 +59,7 @@ const tables =
         FOREIGN KEY (car_id) REFERENCES cars(id) ON DELETE CASCADE
         ON UPDATE CASCADE
         );
-        INSERT INTO users (email,first_name,last_name,password,address,is_admin) values('andela@gmail.com','andela','bootcamp','12345','kigali','true') ON CONFLICT DO NOTHING`;
+        INSERT INTO users (email,first_name,last_name,password,address,is_admin) values('andela@gmail.com','andela','bootcamp','12345','kigali','true') ON CONFLICT DO NOTHING;`
         pool.query(tables)
         .then((res)=>{
            
