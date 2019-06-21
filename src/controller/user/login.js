@@ -20,7 +20,7 @@ const { email,password} = req.body
                 email:answer.rows[0].email,
                 is_admin:answer.rows[0].is_admin
                 }
-                const token = jwt.sign({ user_token }, process.env.SECRET);
+                const token = jwt.sign({ user_token }, process.env.SECRET,{expiresIn:'1d'});
                 res.header('x-auth-token', token)
 
 
