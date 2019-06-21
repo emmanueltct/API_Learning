@@ -44,3 +44,79 @@ User can view all new unsold cars.
 User can flag/report a posted AD as fraudulent.
 
 User can view all unsold cards of a specific make (manufacturer).
+
+
+## Used Tools
+
+### Language
+*Javascript*
+### Server Environment
+
+ *NodeJS* (run time Environment for running JS codes)
+
+### Framework
+
+ *Express* (used for building fast APIs)
+
+### Database
+ *Postgres*
+### Testing Framework and assertion library
+ *Mocha* and *Chai*
+
+### Continuous Integration
+
+Travis CI
+### Test Coverage
+nyc
+
+### Git badge
+
+coveralls
+
+### Deployment
+Heroku
+### heroku app
+https://automart89.herokuapp.com
+
+### Heroku link Example
+
+*user signup*
+https://automart89.herokuapp.com/api/v2/auth/signup
+
+*user login*
+https://automart89.herokuapp.com/api/v2/auth/signin
+
+*POSt car Ad*
+https://automart89.herokuapp.com/api/v2/car
+
+*view single car*
+https://automart89.herokuapp.com/api/v2/car/1
+
+*view all unsold car*
+https://automart89.herokuapp.com/api/v2/car?status=available
+
+*view all in price range*
+https://automart89.herokuapp.com/api/v2/car?status=available?min_price=100&max_price=10000
+
+*view all car with new state*
+https://automart89.herokuapp.com/api/v2/car?status=available&state=new
+
+*view all used car*
+https://automart89.herokuapp.com/api/v2/car?status=available&state=used
+
+*making order request*
+https://automart89.herokuapp.com/api/v2/order
+
+*updating the price of order request*
+https://automart89.herokuapp.com/api/v2/order/3/price
+
+*upadting the status car (mark as sold)*
+https://automart89.herokuapp.com/api/v2/car/5/status
+
+*updating the price of car AD*
+https://automart89.herokuapp.com/api/v2/car/1/price
+
+*admin delete car*
+https://automart89.herokuapp.com/api/v2/car/1
+
+https://automart89.herokuapp.com/api/v2/car
