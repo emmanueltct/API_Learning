@@ -1,6 +1,6 @@
 # automart-3
 
-[![Build Status](https://travis-ci.org/emmanueltct/automart-3.svg?branch=develop)](https://travis-ci.org/emmanueltct/automart-3)  [![Coverage Status](https://coveralls.io/repos/github/emmanueltct/automart-3/badge.svg?branch=develop)](https://coveralls.io/github/emmanueltct/automart-3?branch=develop)
+[![Build Status](https://travis-ci.org/emmanueltct/automart-3.svg?branch=develop)](https://travis-ci.org/emmanueltct/automart-3)    [![Coverage Status](https://coveralls.io/repos/github/emmanueltct/automart-3/badge.svg?branch=develop)](https://coveralls.io/github/emmanueltct/automart-3?branch=develop)   [![Test Coverage](https://api.codeclimate.com/v1/badges/9e4542a98921206d571f/test_coverage)](https://codeclimate.com/github/emmanueltct/AutoMart/test_coverage)
 
 Auto Mart is an online marketplace for automobiles of diverse makes, model or body type. With
 Auto Mart, users can sell their cars or buy from trusted dealerships or private sellers.
