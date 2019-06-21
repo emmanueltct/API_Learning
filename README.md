@@ -7,7 +7,7 @@ Auto Mart, users can sell their cars or buy from trusted dealerships or private 
 
 User can sign up.
 
-User can sign in.
+
 
 User (seller) can post a car sale advertisement.
 
