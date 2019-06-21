@@ -2,16 +2,12 @@ import express from 'express';
 import pool from '../../config/config.js'
 import {createvalidation } from '../../validation/car.validation';
 
-
-
-const createNewCar=(req,res)=>{
-  
+const createNewCar=(req,res)=>{ 
 const {error}=createvalidation(req.body);
 if(error)return res.status(400).json({
   status:400,
   error:error.details[0].message
 })
-
 const owner=req.user_token.user_token;
 const owner_id=owner.id;
 const car_data=[
@@ -22,7 +18,6 @@ const car_data=[
     req.body.model,
     req.body.body_type
 ]
-
 const check_query = 'SELECT * FROM users WHERE id=$1';
 pool.query(check_query ,[owner_id], (error,answer)=>{
   

@@ -5,7 +5,6 @@ import signupvalidation from  '../../validation/user.validation';
 import pool from '../../config/config.js'
 
 const createNewUser=(req,res)=>{
-  
   const {error}=signupvalidation(req.body);
   if(error)return res.status(400).json({
   status:400,

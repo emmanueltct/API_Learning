@@ -12,11 +12,9 @@ const priceUpdateCar=(req,res)=>{
     
     const owner=req.user_token.user_token;
     const owner_id=owner.id;
-
     const selectQuery='SELECT * FROM cars WHERE id=$1';
     pool.query(selectQuery,[car_id], (error,answer)=>{
-        if(answer.rows.length>0){ 
-
+        if(answer.rows.length>0){
             
            if(answer.rows[0].owner_id===owner.id) {
             if(answer.rows[0].status==='available') {

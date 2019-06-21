@@ -2,14 +2,12 @@ import { Pool } from 'pg';
 import   dotenv from  'dotenv'
 dotenv.config();
 
-
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL
 });
 pool.on('connect', () =>{
   //console.log('connected to the db');
 });
-
 const createTables = () => {
 const tables =
 `CREATE TABLE IF NOT EXISTS
@@ -22,7 +20,6 @@ const tables =
     address VARCHAR(128) NOT NULL,
     is_admin BOOLEAN  DEFAULT FALSE
     );
-
     CREATE TABLE IF NOT EXISTS
         cars(
         id SERIAL PRIMARY KEY,

@@ -17,6 +17,7 @@ app.use('/api/v2/auth',login_route);
 app.use('/api/v2/car',car_route);
 app.use('/api/v2/order',order_route);
 
+
 app.use('/automart', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 app.get('/',(req,res)=>{
    return res.status(200).json({

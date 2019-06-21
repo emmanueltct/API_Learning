@@ -3,8 +3,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken' ;
 import loginvalidation from  '../../validation/login.validation';
 import pool from '../../config/config.js'
-
-
 const userLogin=(req,res)=>{
 
 const {error}=loginvalidation(req.body);

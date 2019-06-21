@@ -18,7 +18,7 @@ const createNewOrder=(req,res)=>{
             req.body.car_id,
             req.body.amount
         ];
-     
+
                 const check_car = 'SELECT * FROM cars WHERE id=$1';
                 pool.query(check_car ,[req.body.car_id], (error,response1)=>{
                     if(response1.rows.length>0){

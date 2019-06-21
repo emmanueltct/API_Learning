@@ -6,6 +6,7 @@ import app from '../src/index';
 chai.use(chaiHttp);
 chai.should();
 
+
 describe('Get a welcome message', () => {
   it('user should be able to get a welcome message', (done) => {
     chai.request(app)

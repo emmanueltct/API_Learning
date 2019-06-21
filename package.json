@@ -12,6 +12,7 @@
     "admin": " babel-node ./src/config/db.js insertquery",
     "lint": "eslint 'src/**/*.js' --fix",
     "format": "prettier-eslint 'src/**/*.{js,json}' --write",
+    
     "test": "npm run drop && npm run create &&  nyc --reporter=html --reporter=text mocha --require @babel/register test/*.js --exit",
     "coverage": "nyc --reporter=lcov npm run test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"

@@ -6,8 +6,7 @@ function createvalidation (data){
             price :Joi.number().integer().positive().min(0).max(100000000).required(),
             manufacturer:Joi.string().min(2).required().trim(),
             model :Joi.string().min(2).required().trim(),
-            body_type :Joi.string().min(2).required().trim()
-           
+            body_type :Joi.string().min(2).required().trim()     
     }
   return  Joi.validate(data,carschema);  
 }

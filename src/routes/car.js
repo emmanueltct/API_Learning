@@ -6,7 +6,6 @@ import statusUpdateCar from '../controller/car/carstatus';
 import priceUpdateCar  from '../controller/car/updatecarprice';
 import deleteCar from '../controller/admin/car_delete';
 import viewall from '../controller/car/viewcar'
-
 const car_route=express.Router();
 
 car_route.post('/',auth,createNewCar);
