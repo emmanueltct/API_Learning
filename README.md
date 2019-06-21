@@ -1,6 +1,6 @@
 # automart-3
 
-[![Build Status](https://travis-ci.org/emmanueltct/automart-3.svg?branch=develop)](https://travis-ci.org/emmanueltct/automart-3)
+[![Build Status](https://travis-ci.org/emmanueltct/automart-3.svg?branch=develop)](https://travis-ci.org/emmanueltct/automart-3)  [![Coverage Status](https://coveralls.io/repos/github/emmanueltct/automart-3/badge.svg?branch=develop)](https://coveralls.io/github/emmanueltct/automart-3?branch=develop)
 
 Auto Mart is an online marketplace for automobiles of diverse makes, model or body type. With
 Auto Mart, users can sell their cars or buy from trusted dealerships or private sellers.
@@ -81,42 +81,55 @@ https://automart89.herokuapp.com
 ### Heroku link Example
 
 *user signup*
+
 https://automart89.herokuapp.com/api/v2/auth/signup
 
 *user login*
+
 https://automart89.herokuapp.com/api/v2/auth/signin
 
 *POSt car Ad*
+
 https://automart89.herokuapp.com/api/v2/car
 
 *view single car*
+
 https://automart89.herokuapp.com/api/v2/car/1
 
 *view all unsold car*
+
 https://automart89.herokuapp.com/api/v2/car?status=available
 
 *view all in price range*
+
 https://automart89.herokuapp.com/api/v2/car?status=available?min_price=100&max_price=10000
 
 *view all car with new state*
+
 https://automart89.herokuapp.com/api/v2/car?status=available&state=new
 
 *view all used car*
+
 https://automart89.herokuapp.com/api/v2/car?status=available&state=used
 
 *making order request*
+
 https://automart89.herokuapp.com/api/v2/order
 
 *updating the price of order request*
+
 https://automart89.herokuapp.com/api/v2/order/3/price
 
 *upadting the status car (mark as sold)*
+
 https://automart89.herokuapp.com/api/v2/car/5/status
 
 *updating the price of car AD*
+
 https://automart89.herokuapp.com/api/v2/car/1/price
 
 *admin delete car*
+
 https://automart89.herokuapp.com/api/v2/car/1
 
-https://automart89.herokuapp.com/api/v2/car
+
