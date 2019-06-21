@@ -1,0 +1,818 @@
+
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Automart-challenge",
+    "description": "Auto Mart is online shopping app for cars, this is a market place app where one can make ads and others can be able to make order of that car.",
+    "license": {
+      "name": "ISC",
+      "url": "https://github.com/emmanueltct/automart-3"
+    }
+  },
+  "basePath": "/api/v2",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API Endpoints of users"
+    },
+    {
+      "name": "Cars",
+      "description": "API of car Endpoints"
+    },
+    {
+      "name": "Orders",
+      "description": "API of orders Endpoints"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "create account for new user",
+        "description": "Create a new  account",
+        "parameters": [
+          {
+            "name": "users",
+            "in": "body",
+            "description": "User to be created",
+            "schema": {
+              "$ref": "#/definitions/signup"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "success: user successfully created"
+          },
+          "400": {
+            "description": "Error: invalid input try aigain"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "user make login",
+        "description": "Login a user",
+        "parameters": [
+          {
+            "name": "users",
+            "in": "body",
+            "description": "User to be loged In",
+            "schema": {
+              "$ref": "#/definitions/signin"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "success: successfully loged in"
+          },
+          "400": {
+            "description": "Error: invalid user input"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+     
+      }
+    },
+    "/car": {
+      "post": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "User post car Ad",
+        "description": "User(seller) can Post a new car to be purchased",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name":"Authorization",
+            "in": "header",
+            "description" :"user must have a valid token",
+            "required":true
+
+          },
+          {
+            "name": "manufacture",
+            "in": "formData",
+            "type": "string",
+            "description": "manufacturer"
+          },
+          {
+            "name": "model",
+            "in": "formData",
+            "type": "string",
+            "description": "model"
+          },
+          {
+            "name": "price",
+            "in": "formData",
+            "type": "integer",
+            "description": "price"
+          },
+          {
+            "name": "state",
+            "in": "formData",
+            "type": "string",
+            "description": "state"
+          },
+          {
+            "name": "body_type",
+            "in": "formData",
+            "type": "string",
+            "description": "body_type"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "type": "string",
+            "description": "descriptions"
+          },
+          {
+            "name": "picture",
+            "in": "formData",
+            "type": "file",
+            "description": "file to upload"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "success: car Ad sucessfully created"
+          },
+          "400": {
+            "description": "Error: invalid input data"
+          },
+          "401": {
+            "description": "Error: you are not authenticated"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "user can view available car using price rangr",
+        "description": "user can chekck a list of al available car usin two value of price he/she want",
+        "parameters": [
+          {
+            "name":"Authorization",
+            "in": "header",
+            "description" :"The user token is required",
+            "required":false
+
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": " query parameters",
+            "required":false,
+            "type":"string"
+          },
+          {
+            "name": "min_price",
+            "in": "query",
+            "description": " query parameters",
+            "required":false,
+            "type":"integer"
+          },
+          {
+            "name": "max_price",
+            "in": "query",
+            "description": " query parameters",
+            "required":false,
+            "type":"integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+              "description": "success: the cars information are retrieved"
+            },
+            "403": {
+              "description": "Error: Forbidden"
+            },
+            "404": {
+              "description": "Error: no Car found on this price range not found"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+        }
+      }
+    },
+    "/car/{id}": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "View a single car",
+        "description": "User can view a specific car using car id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "car id",
+            "required":true,
+            "type":"integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+              "description": "success: car information retrieved successfully"
+            },
+            "403": {
+              "description": "Error: Forbidden"
+            },
+            "404": {
+              "description": "Error: car information not found"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Delete a car",
+        "description": "Admin can delete a specific car",
+        "parameters": [
+          {
+            "name":"Authorization",
+            "in": "header",
+            "description" :"The user token is required",
+            "required":true
+            
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": " Id of car ",
+            "required":true,
+            "type":"integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+              "description": "success: car Ad deleted successfully"
+            },
+            "403": {
+              "description": "Error: Forbidden"
+            },
+            "404": {
+              "description": "Error: Car not found"
+            },
+            "500": {
+              "description": "Server Error"
+            }
+        }
+      }
+    },
+    "/car/{id}/status": {
+      "patch": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "mark a posted car ad as sold",
+        "description": "seller can update the status of car to be sold",
+        "parameters": [
+          {
+            "name":"Authorization",
+            "in": "header",
+            "description" :"The user token is required",
+            "required":true
+            
+          },
+          {
+            "name":"id",
+            "in": "path",
+            "description" :"car id",
+            "required":true,
+            "type":"integer"  
+          },
+          {
+            "name": "new status of car posted",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/update_status"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success: car status is updated"
+          },
+          "400": {
+            "description": "Error: invalid data provided"
+          },
+          "403": {
+            "description": "Error: Forbidden"
+          },
+          "404": {
+            "description": "Error: car not found"
+          },
+          "401": {
+            "description": "Error: you are not authenticated"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/car/{id}/price": {
+      "patch": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Update the price of posted car Ad",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name":"Authorization",
+            "in": "header",
+            "description" :"The user token is required",
+            "required":true
+
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "car id",
+            "required":true,
+            "type":"integer"
+          },
+          {
+            "name": "new price of car Ad",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/update_price"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success: the price of car updated"
+          },
+          "404": {
+            "description": "Error: Car not found"
+          },
+          "401": {
+            "description": "Error: you are not authenticated"
+          },
+          "403": {
+            "description": "Error: Forbidden"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/car/flag": {
+      "post": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Report car as flaudurent ",
+        "description": "User can be able to report a car if is a fraudulent",
+        "parameters": [
+          {
+            "name":"Authorization",
+            "in": "header",
+            "description" :"The user token is required",
+            "required":true
+
+          },
+          {
+            "name": "Report a car",
+            "in": "body",
+            "description": "Report a car as fraudulent",
+            "schema": {
+              "$ref": "#/definitions/flag"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "success: car are successfully reported"
+          },
+          "400": {
+            "description": "Error: invalid value"
+          },
+          "401": {
+            "description": "Error: you are not authenticated"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/order": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Make an order request",
+        "description": "Buyer can make purchase order",
+        "parameters": [
+          {
+            "name":"Authorization",
+            "in": "header",
+            "description" :"The user token is required",
+            "required":true
+          },
+          {
+            "name": "purchase order",
+            "in": "body",
+            "description": "purchase order information",
+            "schema": {
+              "$ref": "#/definitions/order"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "success: Order created Successfully"
+          },
+          "400": {
+            "description": "Error: invalid value"
+          },
+          "401": {
+            "description": "Error: you are not authenticated"
+          },
+          "403": {
+            "description": "Error: Forbidden"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/order/{id}/price": {
+      "patch": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "user update the price of his/her purchase order request",
+        "description": "Buyer can update the price of purchase order",
+        "parameters": [
+          {
+            "name":"Authorization",
+            "in": "header",
+            "description" :"The user token is required",
+            "required":true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "order id",
+            "required":true,
+            "type":"integer"
+          },
+          {
+            "name": "new price ",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/update_priceOrder"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success: price of order request is sucessfully updated"
+          },
+          "400": {
+            "description": "Error: invalid value"
+          },
+          "404": {
+            "description": "Error: order not found"
+          },
+          "401": {
+            "description": "Error: you are not authenticated"
+          },
+          "403": {
+            "description": "Error: Forbidden"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/auth/admin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Admin interface",
+        "description": "Create a new Admin",
+        "parameters": [
+          {
+            "name":"Authorization",
+            "in": "header",
+            "description" :"user token",
+            "required":true
+          },
+          {
+            "name": "users",
+            "in": "body",
+            "description": "users to be created and should be an admin",
+            "schema": {
+              "$ref": "#/definitions/signup"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "success: successfully created"
+          },
+          "400": {
+            "description": "Error: invalid input"
+          },
+          "401": {
+            "description": "Error: you are not authenticated"
+          },
+          "403": {
+            "description": "Error: Forbidden"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/auth/{email}/change_assword": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Reset the password",
+        "description": "User should reset password",
+        "parameters": [
+          {
+            "name":"Authorization",
+            "in": "header",
+            "description" :"The user token is required",
+            "required":true
+          },
+          {
+            "name":"email",
+            "in": "path",
+            "description" :"your email",
+            "required":true,
+            "type":"string"  
+          },
+          {
+            "name": "New Password",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/change_assword"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "success: account information changed"
+          },
+          "400": {
+            "description": "Error: invalid value"
+          },
+          "404": {
+            "description": "Error: order not found"
+          },
+          "401": {
+            "description": "Error: you are not authenticated"
+          },
+          "403": {
+            "description": "Error: Forbidden"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    }
+  },
+  
+  
+  "definitions": {
+    "signup": {
+      "required": [
+        "first_name",
+        "last_name",
+        "email",
+        "password",
+        "address"
+      ],
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "signin": {
+      "required": [
+        "email",
+        "password"
+      ],
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "change_assword": {
+      "required": [
+        "password"
+      ],
+      "properties": {
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "car_Data": {
+      "required": [
+        "owner",
+        "manufacture",
+        "model",
+        "price",
+        "state",
+        "body_type",
+        "descriptions"
+      ],
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "integer"
+        },
+        "manufacture": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer"
+        },
+        "state": {
+          "type": "string"
+        },
+        "body_type": {
+          "type": "string"
+        },
+        "descriptions": {
+          "type": "string"
+        }
+      }
+    },
+    "order": {
+      "required": [
+        "car_id",
+        "amount"
+      ],
+      "type": "object",
+      "properties": {
+        "car_id": {
+          "type": "integer"
+        },
+        "amount": {
+          "type": "integer"
+        }
+      }
+    },
+    "fraudulent": {
+      "required": [
+        "car_id",
+        "reason",
+        "description"
+      ],
+      "type": "object",
+      "properties": {
+        "car_id": {
+          "type": "integer"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "update_order": {
+      "required": [
+        "price"
+      ],
+      "properties": {
+        "price": {
+          "type": "integer"
+        }
+      }
+    },
+    "update_status": {
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "update_priceOrder": {
+      "required": [
+        "ammount"
+      ],
+      "properties": {
+        "price": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

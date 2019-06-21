@@ -1,5 +1,7 @@
 
 import express from 'express';
+import swaggerDoc from '../swagger.json';
+import swaggerUi from 'swagger-ui-express';
 import bodyparser from 'body-parser';
 import user_router from './routes/users';
 import login_route from './routes/login';
@@ -15,6 +17,8 @@ app.use('/api/v2/auth',login_route);
 app.use('/api/v2/car',car_route);
 app.use('/api/v2/order',order_route);
 
+
+app.use('/automart', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 app.get('/',(req,res)=>{
    return res.status(200).json({
        status:200,
@@ -25,3 +29,4 @@ const port=process.env.PORT||4300;
 app.listen(port, ()=>console.log(`server staterd at ${port}`));
 
 export default app;
+

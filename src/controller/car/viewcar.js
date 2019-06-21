@@ -10,7 +10,7 @@ const viewall=(req,res)=>{
         const manufacturer=req.query.manufacturer;
         const body_type=req.query.Body_type;
         
-           if(status && !max_price && !max_price && !state && !manufacturer && !body_type) {
+         if(status && !max_price && !max_price && !state && !manufacturer && !body_type) {
                 const selectQuery='SELECT * FROM cars where status=$1';
                 pool.query(selectQuery,[status],(error,result)=>{
                     if(error)return res.status(400).json({
@@ -29,8 +29,6 @@ const viewall=(req,res)=>{
                             })
                     }
                 });
-    
-    
            }
         
            else if(status && max_price  && max_price && !state && !manufacturer && !body_type) {
@@ -51,9 +49,7 @@ const viewall=(req,res)=>{
                         message:'no record found for car advertisement with this price range'
                         })
                 }
-            });
-    
-    
+            });  
        }
     
        else if(status && state && !max_price  && !max_price  && !manufacturer && !body_type) {

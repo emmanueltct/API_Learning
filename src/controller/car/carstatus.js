@@ -39,14 +39,12 @@ const statusUpdateCar=(req,res)=>{
                         return res.status(400).json({
                         status:400,
                         error:'You can not mark this car because its aready marked to be sold' 
-                        });
-                        
+                        });  
                     } 
             }else{
-                
                     return res.status(400).json({
                     status:400,
-                    error:'this car belongs to another user! you can update it only if you are onwer' 
+                    error:'you can not update this car because owned by other user' 
 
                     });
                     

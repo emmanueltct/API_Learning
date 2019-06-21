@@ -7,5 +7,4 @@ function loginvalidation(data) {
   };
   return Joi.validate(data, schema);
 }
-
 export default loginvalidation;

@@ -7,7 +7,6 @@ function auth (req,res,next){
         status:400,
         error:'access denied no token found'
     });
-    
     try{
         const user_verfication= jwt.verify(token,process.env.SECRET);
         req.user_token= user_verfication;

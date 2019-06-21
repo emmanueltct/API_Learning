@@ -1,7 +1,6 @@
 import express from 'express';
 import pool from '../../config/config.js'
 import {orderUpdatevalidation} from '../../validation/order.validation';
-
 const priceUpdateOrder=(req,res)=>{
     const order_id=req.params.id;
     const{error}=orderUpdatevalidation(req.body);
@@ -9,7 +8,6 @@ const priceUpdateOrder=(req,res)=>{
         status:400,
         error:error.details[0].message
     })
-    
     const owner=req.user_token.user_token;
     const owner_id=owner.id;
 

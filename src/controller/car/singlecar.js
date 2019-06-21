@@ -1,9 +1,9 @@
 import express from 'express';
 import pool from '../../config/config.js'
 
+
 const singleCar=(req,res)=>{
 const car_id=req.params.id;
-
 const selectQuery = 'SELECT * FROM cars WHERE id=$1';
 pool.query(selectQuery,[car_id], (error,answer)=>{
 
@@ -18,10 +18,6 @@ pool.query(selectQuery,[car_id], (error,answer)=>{
             error:`no car found on this id ${car_id} `
         }) 
     }
-
-})
-  
+})  
 };
-
-
-    export default singleCar;
+ export default singleCar;

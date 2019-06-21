@@ -10,12 +10,12 @@ dotenv.config();
 chai.use(chaiHttp);
 chai.should();
 
-describe('car creation', () => {
+describe('delete car', () => {
 
   const user_token = {
     id:1,
     email:"emmanuel@gmail.com",
-    is_admin:'false',
+    is_admin:'true',
   };
   const token =jwt.sign({user_token}, process.env.SECRET)
     it('user should be able to post car', (done) => {
